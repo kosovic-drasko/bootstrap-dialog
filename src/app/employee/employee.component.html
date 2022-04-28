@@ -1,0 +1,28 @@
+<h2>Welcome to Employee</h2>
+<app-popup></app-popup>
+
+<table class="table table-bordered">
+   <thead>
+       <tr>
+           <th>Code</th>
+           <th>Name</th>
+           <th>Email</th>
+           <th>Phone</th>
+           <th>Designation</th>
+           <th>Action</th>
+       </tr>
+   </thead>
+   <tbody>
+
+    <tr *ngFor="let item of Emplist">
+        <td>{{item.code}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.phone}}</td>
+        <td>{{item.designation}}</td>
+        <td><a class="btn btn-primary" (click)="functionedit(item.code)" >Edit</a> | <a class="btn btn-danger" (click)="functiondelete(item.code)" >Delete</a></td>
+
+    </tr>
+
+   </tbody>
+</table>

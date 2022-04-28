@@ -1,0 +1,65 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Employee Form</h4>
+        <button type="button" #closebtn class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="empform" (ngSubmit)="SaveEmployee()">
+            <div class="mb-3">
+                <label>Code</label>
+                <div class="input-group">
+                    <input name="code" class="form-control" formControlName="code">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label>Name</label>
+                <div class="input-group">
+                    <input name="name" class="form-control" formControlName="name">
+                </div>
+                <span *ngIf="name && name.invalid" class="errormessage">Please Enter valid name</span>
+            </div>
+            <div class="mb-3">
+                <label>Email</label>
+                <div class="input-group">
+                    <input name="email" class="form-control" formControlName="email">
+                </div>
+                <span *ngIf="email && email.invalid" class="errormessage">Please Enter valid email</span>
+            </div>
+            <div class="mb-3">
+                <label>Phone</label>
+                <div class="input-group">
+                    <input name="phone" class="form-control" formControlName="phone">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label>Designation</label>
+                <div class="input-group">
+                    <select class="form-control" formControlName="designation" >
+                        <option *ngFor="let item of destdata" value="{{item.code}}">{{item.name}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-3">
+
+                <div class="input-group">
+                    <button [disabled]="empform.invalid" type="submit" class="btn btn-primary">Save</button>
+                </div>
+
+                <span [ngClass]="errorclass" >{{errormessage}}</span>
+
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button style="display: none;" type="button" class="btn btn-outline-dark"
+            (click)="modal.close('Save click')">Save</button>
+    </div>
+</ng-template>
+
+<button class="btn btn-primary" #popupbtn id="popupbtn" (click)="open()">Add New</button>
+
+<hr>
+
+<pre></pre>
